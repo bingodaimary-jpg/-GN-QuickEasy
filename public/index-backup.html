@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GN QuickEasy</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  margin:0;
+  background:#f5f6f8;
+  color:#222;
+}
+
+header{
+  background:#111;
+  color:white;
+  padding:18px;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+}
+
+.subtitle{
+  color:#bbb;
+  font-size:13px;
+  margin-top:4px;
+}
+
+.search{
+  width:100%;
+  padding:13px;
+  margin-top:15px;
+  border:0;
+  border-radius:10px;
+  font-size:15px;
+}
+
+.container{
+  padding:16px;
+}
+
+.banner{
+  background:#222;
+  color:white;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+
+.banner h2{
+  margin:0 0 8px;
+}
+
+.categories{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  margin-bottom:20px;
+}
+
+.category{
+  background:white;
+  border:0;
+  padding:10px 15px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+
+.category.active{
+  background:#111;
+  color:white;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.product{
+  background:white;
+  padding:12px;
+  border-radius:14px;
+}
+
+.product-image{
+  height:130px;
+  background:#eee;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+}
+
+.product h3{
+  font-size:15px;
+  margin:10px 0 5px;
+}
+
+.price{
+  font-weight:bold;
+  font-size:17px;
+}
+
+.add{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border:0;
+  border-radius:8px;
+  background:#111;
+  color:white;
+}
+
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:12px;
+  border-top:1px solid #ddd;
+}
+
+.bottom button{
+  background:none;
+  border:0;
+  font-size:13px;
+}
+
+.cart{
+  font-size:20px;
+}
+
+@media(min-width:700px){
+  .products{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">🛒 GN QuickEasy</div>
+
+<div class="subtitle">
+Quick shopping. Easy living.
+</div>
+
+<input
+class="search"
+placeholder="🔍 Search products..."
+>
+
+</header>
+
+<div class="container">
+
+<div class="banner">
+<h2>Welcome to GN QuickEasy</h2>
+<p>Find what you need quickly and easily.</p>
+</div>
+
+<div class="categories">
+
+<button class="category active">
+All
+</button>
+
+<button class="category">
+Electronics
+</button>
+
+<button class="category">
+Fashion
+</button>
+
+<button class="category">
+Beauty
+</button>
+
+<button class="category">
+Home
+</button>
+
+</div>
+
+<h2>Popular Products</h2>
+
+<div class="products">
+
+<div class="product">
+
+<div class="product-image">
+🎧
+</div>
+
+<h3>Wireless Earbuds</h3>
+
+<div class="price">
+₹999
+</div>
+
+<button class="add">
+Add to Cart
+</button>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-image">
+⌚
+</div>
+
+<h3>Smart Watch</h3>
+
+<div class="price">
+₹1,499
+</div>
+
+<button class="add">
+Add to Cart
+</button>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-image">
+👕
+</div>
+
+<h3>Casual T-Shirt</h3>
+
+<div class="price">
+₹599
+</div>
+
+<button class="add">
+Add to Cart
+</button>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-image">
+👟
+</div>
+
+<h3>Running Shoes</h3>
+
+<div class="price">
+₹1,299
+</div>
+
+<button class="add">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="bottom">
+
+<button>🏠<br>Home</button>
+
+<button>📂<br>Categories</button>
+
+<button class="cart">🛒<br>Cart</button>
+
+<button>❤️<br>Wishlist</button>
+
+<button>👤<br>Account</button>
+
+</div>
+
+</body>
+</html><html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GN QuickEasy</title>
+  <style>
+    body { font-family: Arial; margin:0; background:#f5f5f5; }
+    header { background:#111; color:white; padding:20px; }
+    h1 { margin:0; }
+    .search { margin-top:15px; width:100%; padding:12px; box-sizing:border-box; border-radius:8px; border:0; }
+    .products { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:15px; }
+    .card { background:white; padding:15px; border-radius:12px; }
+    .image { font-size:55px; text-align:center; padding:20px; background:#eee; border-radius:10px; }
+    button { width:100%; padding:10px; background:#111; color:white; border:0; border-radius:8px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🛒 GN QuickEasy</h1>
+  <p>Quick shopping. Easy living.</p>
+  <input class="search" placeholder="Search products...">
+</header>
+
+<div class="products">
+  <div class="card">
+    <div class="image">🎧</div>
+    <h3>Wireless Earbuds</h3>
+    <b>₹999</b>
+    <br><br>
+    <button>Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="image">⌚</div>
+    <h3>Smart Watch</h3>
+    <b>₹1,499</b>
+    <br><br>
+    <button>Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="image">👕</div>
+    <h3>Casual T-Shirt</h3>
+    <b>₹599</b>
+    <br><br>
+    <button>Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="image">👟</div>
+    <h3>Running Shoes</h3>
+    <b>₹1,299</b>
+    <br><br>
+    <button>Add to Cart</button>
+  </div>
+</div>
+
+</body>
+</html>

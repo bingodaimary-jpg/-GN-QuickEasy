@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GN QuickEasy | Online Shopping</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f6fa;color:#222}
+header{background:#fff;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;box-shadow:0 2px 10px #ddd}
+.logo{font-size:25px;font-weight:bold;color:#176b50}
+.logo span{color:#f39c12}
+.search{padding:12px;border:1px solid #ddd;border-radius:8px;flex:1;min-width:160px}
+.cart{background:#176b50;color:white;padding:12px 18px;border:0;border-radius:8px;font-weight:bold}
+.hero{margin:22px auto;background:#123e35;color:white;padding:45px 7%;border-radius:16px;max-width:1200px}
+.hero h1{font-size:35px;margin:0 0 12px}
+.hero p{color:#d9eee5}
+.hero button{background:#f4a623;color:#222;border:0;padding:13px 22px;border-radius:7px;font-weight:bold}
+.container{max-width:1200px;margin:auto;padding:15px}
+h2{margin-top:30px}
+.categories{display:flex;gap:10px;flex-wrap:wrap}
+.category{padding:12px 18px;border:0;border-radius:20px;background:white;cursor:pointer}
+.category.active,.category:hover{background:#176b50;color:white}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:16px}
+.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px #ddd}
+.card img{width:100%;height:160px;object-fit:cover}
+.info{padding:12px}
+.info h3{font-size:16px;margin:5px 0}
+.price{font-weight:bold;color:#176b50;font-size:18px}
+.add{width:100%;padding:11px;border:0;border-radius:7px;background:#176b50;color:white;margin-top:10px;cursor:pointer}
+footer{text-align:center;background:#123e35;color:white;padding:25px;margin-top:40px}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">GN <span>QuickEasy</span></div>
+ <input class="search" id="search" placeholder="Search products..." oninput="render()">
+ <button class="cart" onclick="showCart()">🛒 Cart (<span id="count">0</span>)</button>
+</header>
+
+<section class="hero">
+ <h1>Everything You Need, All in One Place!</h1>
+ <p>Discover great products at amazing prices.</p>
+ <button onclick="document.getElementById('shop').scrollIntoView()">Shop Now →</button>
+</section>
+
+<main class="container" id="shop">
+ <h2>Shop by Category</h2>
+ <div class="categories">
+  <button class="category active" onclick="choose('All',this)">All</button>
+  <button class="category" onclick="choose('Electronics',this)">Electronics</button>
+  <button class="category" onclick="choose('Fashion',this)">Fashion</button>
+  <button class="category" onclick="choose('Beauty',this)">Beauty</button>
+  <button class="category" onclick="choose('Home',this)">Home</button>
+ </div>
+
+ <h2>Popular Products</h2>
+ <div class="products" id="products"></div>
+</main>
+
+<footer>
+ <h2>GN QuickEasy</h2>
+ <p>Your everyday shopping destination.</p>
+ <p>© 2026 GN QuickEasy. All rights reserved.</p>
+</footer>
+
+<script>
+const items=[
+ {name:"Wireless Headphones",price:1499,cat:"Electronics",img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"},
+ {name:"Smart Watch",price:1999,cat:"Electronics",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"},
+ {name:"Casual T-Shirt",price:599,cat:"Fashion",img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500"},
+ {name:"Running Shoes",price:1299,cat:"Fashion",img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"},
+ {name:"Beauty Products",price:799,cat:"Beauty",img:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500"},
+ {name:"Skin Care",price:499,cat:"Beauty",img:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500"},
+ {name:"Table Lamp",price:899,cat:"Home",img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500"},
+ {name:"Home Decor",price:699,cat:"Home",img:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=500"}
+];
+let cart=[];
+let category="All";
+
+function render(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const filtered=items.filter(p=>
+  (category==="All"||p.cat===category)&&p.name.toLowerCase().includes(q)
+ );
+ document.getElementById("products").innerHTML=filtered.map(p=>`
+ <div class="card">
+  <img src="${p.img}" alt="${p.name}" loading="lazy">
+  <div class="info">
+   <small>${p.cat}</small>
+   <h3>${p.name}</h3>
+   <div class="price">₹${p.price.toLocaleString("en-IN")}</div>
+   <button class="add" onclick="addCart('${p.name}')">Add to Cart</button>
+  </div>
+ </div>`).join("")||"<p>No products found.</p>";
+}
+function choose(cat,btn){
+ category=cat;
+ document.querySelectorAll(".category").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+ render();
+}
+function addCart(name){
+ const product=items.find(p=>p.name===name);
+ cart.push(product);
+ document.getElementById("count").textContent=cart.length;
+ alert(name+" added to your cart!");
+}
+function showCart(){
+ if(!cart.length){alert("Your cart is empty!");return;}
+ const total=cart.reduce((sum,p)=>sum+p.price,0);
+ alert("YOUR CART\n\n"+cart.map(p=>p.name+" - ₹"+p.price).join("\n")+"\n\nTotal: ₹"+total.toLocaleString("en-IN"));
+}
+render();
+</script>
+</body>
+</html>
